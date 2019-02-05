@@ -34,7 +34,8 @@ class ParkingLotMain:
         command, *args = _input.split(" ")
         self.parking_lot.create_parking_lot(*args)
         self.parking_lot.park('skn', 'White')
-        self.parking_lot.registration_numbers_for_cars_with_colour('Red')
+        self.parking_lot.registration_numbers_for_cars_with_colour('White')
+        self.parking_lot.slot_numbers_for_cars_with_colour('White')
 
 
 if __name__ == '__main__':
