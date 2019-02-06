@@ -19,7 +19,14 @@ class ParkingLot:
     def __init__(self):
         self.slots = {}
 
+    def is_parking_lot_created(self):
+        return True if self.slots else False
+
     def create_parking_lot(self, slot_count):
+        if self.is_parking_lot_created():
+            print("Parking lot already created")
+            return
+
         slot_count = int(slot_count)
         if slot_count < 1:
             print("Invalid slot count")
@@ -36,6 +43,9 @@ class ParkingLot:
         return None
 
     def park(self, registration_nog, color):
+        if not self.is_parking_lot_created():
+            return
+
         slot = self.get_slot_if_available()
         if not slot:
             print("Sorry, parking lot is full")
@@ -46,6 +56,9 @@ class ParkingLot:
         return
 
     def registration_numbers_for_cars_with_colour(self, color):
+        if not self.is_parking_lot_created():
+            return
+
         registration_nos = []
         for i in self.slots:
             if self.slots[i].car and self.slots[i].car.color == color:
@@ -53,6 +66,9 @@ class ParkingLot:
         print(", ".join(registration_nos)) if registration_nos else print("Not found")
 
     def slot_numbers_for_cars_with_colour(self, color):
+        if not self.is_parking_lot_created():
+            return
+
         slot_numbers = []
         for i in self.slots:
             if self.slots[i].car and self.slots[i].car.color == color:
@@ -60,6 +76,9 @@ class ParkingLot:
         print(", ".join(slot_numbers)) if slot_numbers else print("Not found")
 
     def slot_number_for_registration_number(self, registration_no):
+        if not self.is_parking_lot_created():
+            return
+
         for i in self.slots:
             if self.slots[i].car and self.slots[i].car.registration_no == registration_no:
                 print(i)
@@ -67,6 +86,9 @@ class ParkingLot:
         print("Not found")
 
     def leave(self, slot_no):
+        if not self.is_parking_lot_created():
+            return
+
         slot_no = int(slot_no)
         if slot_no in self.slots:
             slot_obj = self.slots[slot_no]
@@ -78,6 +100,9 @@ class ParkingLot:
             print("Slot number {slot_no} is free".format(slot_no=str(slot_no)))
 
     def status(self):
+        if not self.is_parking_lot_created():
+            return
+
         print("Slot No.  Registration No\t Color")
         for i in self.slots:
             if self.slots[i].car and not self.slots[i].is_available:
