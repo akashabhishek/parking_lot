@@ -1,0 +1,9 @@
+if [ $# -eq 0 ]
+  then
+    python3 functional_spec/spec/parking_lot_main.py
+else
+    if [ -e $1 ]
+    then
+        python3 functional_spec/spec/parking_lot_main.py $1
+    fi
+fi
