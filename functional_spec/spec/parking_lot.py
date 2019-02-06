@@ -57,3 +57,11 @@ class ParkingLot:
             if self.slots[i].car and self.slots[i].car.color == color:
                 slot_numbers.append(str(i))
         print(", ".join(slot_numbers)) if slot_numbers else print("Not found")
+
+    def slot_number_for_registration_number(self, registration_no):
+        for i in self.slots:
+            if self.slots[i].car and self.slots[i].car.registration_no == registration_no:
+                print(i)
+                return
+        print("Not found")
+
