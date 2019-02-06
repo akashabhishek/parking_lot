@@ -32,11 +32,11 @@ class ParkingLotMain:
 
     def execute_command(self, _input):
         command, *args = _input.split(" ")
-        self.parking_lot.create_parking_lot(*args)
-        self.parking_lot.park('skn', 'White')
-        self.parking_lot.registration_numbers_for_cars_with_colour('White')
-        self.parking_lot.slot_numbers_for_cars_with_colour('White')
-        self.parking_lot.status()
+        if hasattr(self.parking_lot, command):
+            command_function = getattr(self.parking_lot, command)
+            command_function(*args)
+        else:
+            print("Not Found")
 
 
 if __name__ == '__main__':

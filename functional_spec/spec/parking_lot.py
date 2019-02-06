@@ -24,9 +24,9 @@ class ParkingLot:
         if slot_count < 1:
             print("Invalid slot count")
             return
-        for i in range(1, slot_count):
+        for i in range(1, slot_count + 1):
             self.slots[i] = Slot(slot_no=i, is_available=True)
-
+        print("Created a parking lot with {slot_count} slots".format(slot_count=str(slot_count)))
         return
 
     def get_slot_if_available(self):
@@ -39,6 +39,7 @@ class ParkingLot:
         slot = self.get_slot_if_available()
         if not slot:
             print("Sorry, parking lot is full")
+            return
         slot.car = Car(registration_nog, color)
         slot.is_available = False
         print("Allocated slot number: {slot_no}".format(slot_no=slot.slot_no))
@@ -46,9 +47,9 @@ class ParkingLot:
 
     def registration_numbers_for_cars_with_colour(self, color):
         registration_nos = []
-        for i in self.slots.values():
-            if i.car and i.car.color == color:
-                registration_nos.append(i.car.registration_no, )
+        for i in self.slots:
+            if self.slots[i].car and self.slots[i].car.color == color:
+                registration_nos.append(self.slots[i].car.registration_no, )
         print(", ".join(registration_nos)) if registration_nos else print("Not found")
 
     def slot_numbers_for_cars_with_colour(self, color):
@@ -74,10 +75,10 @@ class ParkingLot:
                 return
             slot_obj.car = None
             slot_obj.is_available = True
-            print("Slot number {slot_no} is free".format(str(slot_no)))
+            print("Slot number {slot_no} is free".format(slot_no=str(slot_no)))
 
     def status(self):
-        print("Slot No. Registration No Color")
+        print("Slot No.  Registration No\t Color")
         for i in self.slots:
             if self.slots[i].car and not self.slots[i].is_available:
-                print(i, "\t", self.slots[i].car.registration_no, "\t\t", self.slots[i].car.color)
+                print(i, "\t ", self.slots[i].car.registration_no, "\t", self.slots[i].car.color)
