@@ -65,3 +65,15 @@ class ParkingLot:
                 return
         print("Not found")
 
+    def leave(self, slot_no):
+        slot_no = int(slot_no)
+        if slot_no in self.slots:
+            slot_obj = self.slots[slot_no]
+            if slot_obj.is_available:
+                print("Not Found")
+                return
+            slot_obj.car = None
+            slot_obj.is_available = True
+            print("Slot number {slot_no} is free".format(str(slot_no)))
+
+
