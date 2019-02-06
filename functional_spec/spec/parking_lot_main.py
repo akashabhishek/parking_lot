@@ -36,6 +36,7 @@ class ParkingLotMain:
         self.parking_lot.park('skn', 'White')
         self.parking_lot.registration_numbers_for_cars_with_colour('White')
         self.parking_lot.slot_numbers_for_cars_with_colour('White')
+        self.parking_lot.status()
 
 
 if __name__ == '__main__':

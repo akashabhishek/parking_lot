@@ -76,4 +76,8 @@ class ParkingLot:
             slot_obj.is_available = True
             print("Slot number {slot_no} is free".format(str(slot_no)))
 
-
+    def status(self):
+        print("Slot No. Registration No Color")
+        for i in self.slots:
+            if self.slots[i].car and not self.slots[i].is_available:
+                print(i, "\t", self.slots[i].car.registration_no, "\t\t", self.slots[i].car.color)
